@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sharplogicians_Orderexporter>
+            <version>1.0.5</version>
+        </Sharplogicians_Orderexporter>
+    </modules>
+    <frontend>
+        <routers>
+            <exporter>
+                <use>standard</use>
+                <args>
+                    <module>Sharplogicians_Orderexporter</module>
+                    <frontName>exporter</frontName>
+                </args>
+            </exporter>
+        </routers>
+        <layout>
+            <updates>
+                <exporter>
+                    <file>exporter.xml</file>
+                </exporter>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<adminhtml>
+				<args>
+                    <modules>
+                        <sharplogicians_orderexporter before="Mage_Adminhtml">Sharplogicians_Orderexporter_Adminhtml</sharplogicians_orderexporter>
+                    </modules>
+				</args>
+			</adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+		<menu>
+			<exporter module="exporter">
+				<title>Exporter</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<export module="exporter">
+						<title>Export Orders</title>
+						<sort_order>1</sort_order>
+						<action>*/exporter</action>
+					</export>
+					<import module="exporter">
+						<title>Import Orders</title>
+						<sort_order>2</sort_order>
+						<action>*/importer</action>
+					</import>
+
+
+				</children>
+			</exporter>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<exporter>
+							<title>Exporter Module</title>
+							<sort_order>10</sort_order>
+							<children>
+								<export>
+									<title>Export Orders</title>
+								</export>
+								<import>
+									<title>Import Orders</title>
+								</import>
+							</children>
+						</exporter>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<sharplogicians_orderexporter>
+					<file>exporter.xml</file>
+				</sharplogicians_orderexporter>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <exporter>
+                <class>Sharplogicians_Orderexporter_Model</class>
+                <resourceModel>exporter_mysql4</resourceModel>
+            </exporter>
+            <exporter_mysql4>
+                <class>Sharplogicians_Orderexporter_Model_Mysql4</class>
+                <entities>
+                    <exporter>
+                        <table>exporter</table>
+                    </exporter>
+                </entities>
+            </exporter_mysql4>
+        </models>
+        <resources>
+            <exporter_setup>
+                <setup>
+                    <module>Sharplogicians_Orderexporter</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </exporter_setup>
+            <exporter_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </exporter_write>
+            <exporter_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </exporter_read>
+        </resources>
+        <blocks>
+            <exporter>
+                <class>Sharplogicians_Orderexporter_Block</class>
+            </exporter>
+			
+			<adminhtml>
+                <rewrite>
+                    <sales_order_shipment_view_form>Sharplogicians_Orderexporter_Block_Sales_Order_Form_Form</sales_order_shipment_view_form>
+                </rewrite>
+            </adminhtml>
+			
+			<adminhtml>
+                <rewrite>
+                    <sales_order_shipment_create_items>Sharplogicians_Orderexporter_Block_Sales_Order_Items</sales_order_shipment_create_items>
+                </rewrite>
+            </adminhtml>
+			
+        </blocks>
+        <helpers>
+            <exporter>
+                <class>Sharplogicians_Orderexporter_Helper</class>
+            </exporter>
+        </helpers>
+    </global>
+	<crontab>
+        <jobs>
+            <orderexporter>
+                <schedule>
+                    <cron_expr>*/2 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>exporter/observer::exportall</model>
+                </run>
+            </orderexporter>
+        </jobs>
+    </crontab>
+</config>
