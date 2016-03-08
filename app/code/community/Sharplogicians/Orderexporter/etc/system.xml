@@ -24,6 +24,8 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
 					<expanded>1</expanded>
+ 
+                    
 					 <fields>
                          <cron_settings>
                             <label>How often do you want the cron to run?</label>
@@ -34,6 +36,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </cron_settings>
+                    </fields>
+					
+					<fields>
+                        <timevalue translate="label">
+                            <label>Enter Orders Time to Export </label>
+                            <comment>Set Time Filter for exporting order, Value here will be in seconds</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </timevalue>
                     </fields>
 					
                 </orderexportcron>
