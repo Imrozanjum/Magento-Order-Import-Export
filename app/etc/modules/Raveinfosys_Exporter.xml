@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Sharplogicians_Orderexporter>
-            <active>true</active>
-            <codePool>community</codePool>
-        </Sharplogicians_Orderexporter>
-    </modules>
-</config> 
