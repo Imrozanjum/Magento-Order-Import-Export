@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <sharplogicians translate="label" module="exporter">
+            <label>Sharplogicians Extensions</label>
+            <sort_order>100</sort_order>
+        </sharplogicians>
+    </tabs>
+    <sections>
+        <sharplogicians translate="label" module="exporter">
+            <label>Order Export Options</label>
+            <tab>sharplogicians</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+ 
+            <groups>
+                <orderexportcron translate="label" module="exporter">
+                    <label>Order Export Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<expanded>1</expanded>
+					 <fields>
+                         <cron_settings>
+                            <label>How often do you want the cron to run?</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Use Crontab Format (Eg. "*/5 * * * *" for every 5 minutes)</comment>
+							<sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cron_settings>
+                    </fields>
+					
+                </orderexportcron>
+            </groups>
+        </sharplogicians>
+    </sections>
+</config>

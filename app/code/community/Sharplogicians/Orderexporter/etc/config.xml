@@ -146,11 +146,19 @@
             </exporter>
         </helpers>
     </global>
+	 <default>
+        <sharplogicians>                
+            <orderexportcron>
+                <cron_settings>*/10 * * * *</cron_settings>
+            </orderexportcron>
+        </sharplogicians>
+    </default>
 	<crontab>
         <jobs>
             <orderexporter>
                 <schedule>
-                    <cron_expr>*/2 * * * *</cron_expr>
+                    <!--cron_expr>*/2 * * * *</cron_expr-->
+					 <config_path>sharplogicians/orderexportcron/cron_settings</config_path>
                 </schedule>
                 <run>
                     <model>exporter/observer::exportall</model>
@@ -158,4 +166,5 @@
             </orderexporter>
         </jobs>
     </crontab>
+	
 </config>
